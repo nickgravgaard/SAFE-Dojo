@@ -332,6 +332,7 @@ let view (model: Model) dispatch =
                                 (* Task 3.1 MAP: Call the mapWidget function here, which creates a
                                    widget to display a map using the React ReCharts component. The function
                                    takes in a LocationResponse value as input and returns a ReactElement. *)
+                                mapWidget report.Location
                             ]
                         ]
                         Bulma.column [
