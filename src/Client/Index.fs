@@ -153,7 +153,7 @@ module ViewParts =
                     (* Task 3.2 MAP: Set the center of the map using map.center, supply the lat/long value as input. *)
                     map.center (lr.Location.LatLong.Latitude, lr.Location.LatLong.Longitude)
                     (* Task 3.3 MAP: Update the Zoom to 15. *)
-                    map.zoom 12
+                    map.zoom 15
                     map.height 500
                     map.markers [
                         (* Task 3.4 MAP: Create a marker for the map. Use the makeMarker function above. *)
