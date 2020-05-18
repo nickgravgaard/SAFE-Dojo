@@ -76,11 +76,16 @@ let update msg model =
             ServerState = Idle }, Cmd.none
 
     | PostcodeChanged p ->
+        let validationError =
+            match (p = "", Validation.isValidPostcode p) with
+            | (true, _) -> Some "Postcode must not be blank"
+            | (false, true) -> None
+            | (false, false) -> Some "Invalid postcode"
         { model with
             Postcode = p
             (* Task 2.2 Validation. Use the Validation.isValidPostcode function to implement client-side form validation.
                Note that the validation is the same shared code that runs on the server! *)
-            ValidationError = None }, Cmd.none
+            ValidationError = validationError }, Cmd.none
 
     | ErrorMsg e ->
         let errorAlert =
@@ -340,5 +345,3 @@ let view (model: Model) dispatch =
 
         ]
     ]
-
-
