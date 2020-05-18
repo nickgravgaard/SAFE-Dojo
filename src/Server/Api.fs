@@ -44,10 +44,9 @@ let getWeather postcode = async {
        asWeatherResponse functions to create and return a WeatherResponse instead of the stub.
        Don't forget to use let! instead of let to "await" the Task. *)
 
-    let emptyWeather =
-        { WeatherType = WeatherType.Clear
-          AverageTemperature = 0. }
-    return emptyWeather
+    let! location = GeoLocation.getLocation postcode
+    let! weather = Weather.getWeatherForPosition location.LatLong
+    return weather |> asWeatherResponse
 }
 
 let dojoApi =
