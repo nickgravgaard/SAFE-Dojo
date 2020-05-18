@@ -151,7 +151,7 @@ module ViewParts =
         widget "Map"  [
                 PigeonMaps.map [
                     (* Task 3.2 MAP: Set the center of the map using map.center, supply the lat/long value as input. *)
-
+                    map.center (lr.Location.LatLong.Latitude, lr.Location.LatLong.Longitude)
                     (* Task 3.3 MAP: Update the Zoom to 15. *)
                     map.zoom 12
                     map.height 500
