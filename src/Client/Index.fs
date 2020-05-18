@@ -54,10 +54,12 @@ let getResponse postcode = async {
     (* Task 4.4 WEATHER: Fetch the weather from the API endpoint you created.
        Then, save its value into the Report below. You'll need to add a new
        field to the Report type first, though! *)
+    let! weather = dojoApi.GetWeather postcode
 
     return
         { Location = location
-          Crimes = crimes }
+          Crimes = crimes
+          Weather = weather }
 }
 
 /// The update function knows how to update the model given a message.
