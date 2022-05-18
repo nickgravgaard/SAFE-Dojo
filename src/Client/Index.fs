@@ -14,7 +14,8 @@ open Shared
 /// The different elements of the completed report.
 type Report =
     { Location: LocationResponse
-      Crimes: CrimeResponse array }
+      Crimes: CrimeResponse array
+      Weather: WeatherResponse }
 
 type ServerState =
     | Idle
