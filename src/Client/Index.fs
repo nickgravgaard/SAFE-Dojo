@@ -332,6 +332,7 @@ let view (model: Model) dispatch =
                                         (* Task 4.5 WEATHER: Generate the view code for the weather tile
                                            using the weatherWidget function, supplying the weather data
                                            from the report value, and include it here as part of the list *)
+                                        weatherWidget report.Weather
                                     ]
                                 ]
                                 (* Task 3.1 MAP: Call the mapWidget function here, which creates a
