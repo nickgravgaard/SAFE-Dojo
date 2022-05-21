@@ -188,7 +188,7 @@ module ViewParts =
                                    and display it here instead of an empty string.
                                    Hint: Use sprintf with "%.2f" to round the temperature to 2 decimal points
                                    (look at the locationWidget for an example) *)
-                                Html.td ""
+                                Html.td (sprintf "%.2f\xA0\u2103" weatherReport.Temperature)
                             ]
                         ]
                     ]
