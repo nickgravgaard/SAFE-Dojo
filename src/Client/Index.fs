@@ -34,6 +34,7 @@ type Msg =
     | GetReport
     | PostcodeChanged of string
     | GotReport of Report
+    | Clear
     | ErrorMsg of exn
 
 /// The init function is called to start the message pump with an initial view.
@@ -89,6 +90,9 @@ let update msg model =
             (* Task 2.2 Validation. Use the Validation.isValidPostcode function to implement client-side form validation.
                Note that the validation is the same shared code that runs on the server! *)
             ValidationError = validationError }, Cmd.none
+
+    | Clear ->
+        init ()
 
     | ErrorMsg e ->
         let errorAlert =
@@ -299,18 +303,21 @@ let view (model: Model) dispatch =
                                     ]
                                 ]
                             ]
-                            Bulma.control.div [
-                                    Bulma.button.a [
-                                        color.isInfo
-                                        prop.onClick (fun _ -> dispatch GetReport)
-                                        prop.disabled (model.ValidationError.IsSome)
-                                        if (model.ServerState = Loading) then button.isLoading
-                                        prop.text "Fetch"
-                                    ]
-                                ]
+                            Bulma.button.a [
+                                color.isInfo
+                                prop.onClick (fun _ -> dispatch GetReport)
+                                prop.disabled (model.ValidationError.IsSome)
+                                if (model.ServerState = Loading) then button.isLoading
+                                prop.text "Fetch"
+                            ]
+                            Bulma.button.a [
+                                color.isLight
+                                prop.onClick (fun _ -> dispatch Clear)
+                                prop.text "Clear"
                             ]
                         ]
                     ]
+                ]
             ]
 
             match model.Report, model.ServerState with
